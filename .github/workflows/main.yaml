@@ -16,12 +16,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout
+        uses: actions/checkout@v4
 
       # Particle Compile Action
       - name: Compile Firmware
         id: compile
-        uses: particle-iot/compile-action
+        uses: particle-iot/compile-action@v1
         with:
           # Set the particle-platform-name to the platform you're targeting.
           # Allowed values: core, photon, p1, electron, argon, boron, xenon, esomx, bsom, b5som, tracker, trackerm, p2, msom
@@ -29,7 +29,7 @@ jobs:
 
       # Optional: Upload compiled firmware as an artifact on GitHub.
       - name: Upload Firmware as Artifact
-        uses: actions/upload-artifact
+        uses: actions/upload-artifact@v4
         with:
           name: firmware-artifact
           path: |
