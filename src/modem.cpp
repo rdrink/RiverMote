@@ -16,7 +16,7 @@
     TinyGsm modem(Serial1);
 #endif
 
-static bool gpsEnabled, gpsFixed = false;
+static bool gpsEnabled = false, gpsFixed = false;
 
 bool modem_init(unsigned long baud, uint max_retries) {
     // Initialize modem serial communication
@@ -71,8 +71,12 @@ ModemGPSData modem_gps_read() {
 }
 
 String modem_gps_read_time() {
-    String raw = modem.getGPSraw();
-    return raw.substring(4, 18); // Position 3 of raw field
+    if (gpsFixed) {
+        String raw = modem.getGPSraw();
+        return raw.substring(4, 18); // Position 3 of raw field
+    } else {
+        return String("00000000000000");
+    }
 }
 
 bool modem_gps_fixed() {

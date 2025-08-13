@@ -41,7 +41,7 @@ ModemGPSData modem_gps_read();
 
 /**
  * Read the current GPS time from the modem.
- * @return String containing the current time in format `yyyyMMddhhmmss`
+ * @return String containing the current time in format `yyyyMMddhhmmss`, or "00000000000000" if GPS is not fixed
  */
 String modem_gps_read_time();
 

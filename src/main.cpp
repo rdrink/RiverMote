@@ -4,7 +4,8 @@
 #include "sd.h"
 #include "pmu.h"
 
-#define WAIT_FOR_SERIAL 1
+#define WAIT_FOR_SERIAL 0
+#define WAIT_FOR_GPS_FIX 1
 
 void setup() {
     Serial.begin(115200);
@@ -34,11 +35,15 @@ void setup() {
 	if (!modem_gps_enable()) {
 		Serial.println("modem gps enable failed!");
 	}
+#if WAIT_FOR_GPS_FIX
 	Serial.print("modem gps enabled, waiting for fix");
 	while (!modem_gps_fixed()) {
 		Serial.print(".");
 		delay(1000);
 	}
+#else
+	Serial.println("modem gps enabled");
+#endif
 
 	// Initialize SD card
 	Serial.println("initializing sd card");
