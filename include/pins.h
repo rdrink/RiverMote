@@ -1,7 +1,12 @@
 #pragma once
 
+// I2C sensor bus
 #define PIN_I2C_SDA 17
 #define PIN_I2C_SCL 16
+#define I2C_FREQ 400000
+
+// OneWire bus for temperature sensor
+#define PIN_TEMP 1
 
 #define PIN_PMU_SDA 15
 #define PIN_PMU_SCL 7

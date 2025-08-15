@@ -37,6 +37,7 @@ static void pmu_configure_power_measurement() {
     pmu.enableVbusVoltageMeasure();
     pmu.enableBattVoltageMeasure();
     pmu.enableSystemVoltageMeasure();
+    pmu.fuelGaugeControl(true, true); // Allow PMU to learn the battery curve and save to ROM
 }
 
 // Configures PMU charging parameters.
@@ -55,7 +56,7 @@ static void pmu_configure_charging() {
 
 bool pmu_init() {
     // Initialize pmu
-    if (!pmu.begin(Wire, AXP2101_SLAVE_ADDRESS, PIN_PMU_SDA, PIN_PMU_SCL)) {
+    if (!pmu.begin(Wire1, AXP2101_SLAVE_ADDRESS, PIN_PMU_SDA, PIN_PMU_SCL)) {
         return false;
     }
     // Configure PMU settings
