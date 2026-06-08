@@ -101,7 +101,7 @@ static void handle_control(char *topic, byte *payload, unsigned int len) {
 bool minimote_comm_init() {
     // Create a device endpoint based off the device's unique MAC address, which will be used to generate a unique
     // client ID, username, and topics for this device
-    uint8_t mac[6] = {0};
+    uint8_t mac[6] = {};
     esp_read_mac(mac, ESP_MAC_WIFI_STA);
     snprintf(endpoint, sizeof(endpoint), "%02x%02x%02x%02x%02x%02x", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
     snprintf(user, sizeof(user), "minimote-%s", endpoint);

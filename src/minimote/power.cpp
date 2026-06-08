@@ -18,8 +18,8 @@
 #include "modem.h"
 #include "pmu.h"
 
-#define LOW_BATTERY_VOLT 3.55f // Low power mode will be entered under this voltage (~25% for a healthy 18650 cell)
-#define LOW_BATTERY_SLEEP_SEC 7200 // Time to deep sleep when low battery is detected, in seconds (2 hours)
+#define LOW_BATTERY_VOLT 3.65f // Low power mode will be entered under this voltage
+#define LOW_BATTERY_SLEEP_SEC 21600 // Time to deep sleep when low battery is detected, in seconds (6 hours)
 
 #define SAMPLE_SLOT_SECONDS 180 // Duration to sleep between samples, in seconds (3 minutes). Should be an even divisor of PUBLISH_SLOT_SECONDS
 #define PUBLISH_SLOT_SECONDS 900 // Duration to sleep between publish windows, in seconds (15 minutes). Can be changed by sending a control message
