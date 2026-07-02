@@ -11,15 +11,15 @@
 #include "sensors/chamber.h"
 #include "sensors/compass.h"
 #include "sensors/env.h"
-#include "sensors/imu.h"
-#include "sensors/light.h"
+//#include "sensors/imu.h"
+//#include "sensors/light.h"
 #include "sensors/ozone.h"
 #include "sensors/pm_sensor.h"
-#include "sensors/spectral.h"
+#include "rivermote/spectral.h"
 #include "sensors/tds.h"
 #include "sensors/temp.h"
 #include "sensors/turbidity.h"
-#include "flasher.h"
+#include "sensors/uv.h"
 #include "modem.h"
 #include "pins.h"
 #include "pmu.h"
@@ -95,8 +95,6 @@ void setup() {
 
     // Initialization of shared components (sensors)
     Wire.begin(PIN_I2C_SDA, PIN_I2C_SCL, I2C_FREQ);
-    init_cds();
-    flasher_init();
     init_sensor(temp_init, "temperature sensor");
     init_sensor(turbidity_init, "turbidity sensor");
     init_sensor(tds_init, "TDS sensor");
@@ -115,6 +113,7 @@ void setup() {
     init_sensor(velo_init, "air velocity sensor");
     init_sensor(pm_init, "particulate matter sensor");
     init_sensor(chamber_init, "chamber temp sensor");
+    init_sensor(uv_init, "uv sensor");
 #endif
 
 #if RIVERMOTE
