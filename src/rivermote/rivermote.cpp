@@ -7,12 +7,11 @@
 #include "rivermote/bluetooth.h"
 #include "rivermote/control.h"
 #include "rivermote/motors.h"
-#include "sensors/compass.h"
-#include "sensors/spectral.h"
+#include "sensors/rivermote/compass.h"
+#include "sensors/rivermote/spectral.h"
 #include "sensors/tds.h"
 #include "sensors/temp.h"
 #include "sensors/turbidity.h"
-#include "flasher.h"
 #include "modem.h"
 #include "pmu.h"
 #include "sd.h"
@@ -52,7 +51,6 @@ void rivermote_post_sensor_init() {
 }
 
 void rivermote_tick() {
-    flash_beacon();
     control_handle_input(bluetooth_get_pressed());
     control_autonomous_mode();
 

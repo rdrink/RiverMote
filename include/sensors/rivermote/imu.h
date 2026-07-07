@@ -1,5 +1,7 @@
 #pragma once
 
+#if RIVERMOTE
+
 typedef struct IMUAngles {
     float roll, pitch, yaw;
 } IMUAngles;
@@ -15,3 +17,5 @@ bool imu_init();
  * @return IMUAngles struct containing roll, pitch, and yaw in degrees
  */
 IMUAngles imu_read();
+
+#endif // RIVERMOTE

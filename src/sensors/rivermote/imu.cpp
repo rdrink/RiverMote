@@ -1,7 +1,9 @@
+#include "sensors/rivermote/imu.h"
+
+#if RIVERMOTE
+
 #include <ICM_20948.h>
 #include <math.h>
-
-#include "sensors/imu.h"
 
 static ICM_20948_I2C icm;
 static bool icmInitialized = false;
@@ -85,3 +87,5 @@ IMUAngles imu_read() {
     prevAngles = angles; 
     return angles;
 }
+
+#endif // RIVERMOTE

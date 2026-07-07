@@ -7,19 +7,16 @@
 
 #include "minimote/minimote.h"
 #include "rivermote/rivermote.h"
-#include "sensors/air_velocity.h"
-#include "sensors/chamber.h"
-#include "sensors/compass.h"
-#include "sensors/env.h"
-//#include "sensors/imu.h"
-//#include "sensors/light.h"
-#include "sensors/ozone.h"
-#include "sensors/pm_sensor.h"
-#include "rivermote/spectral.h"
+#include "sensors/minimote/air_velocity.h"
+#include "sensors/minimote/chamber.h"
+#include "sensors/minimote/env.h"
+#include "sensors/minimote/ozone.h"
+#include "sensors/minimote/pm.h"
+#include "sensors/minimote/uv.h"
+#include "sensors/rivermote/spectral.h"
 #include "sensors/tds.h"
 #include "sensors/temp.h"
 #include "sensors/turbidity.h"
-#include "sensors/uv.h"
 #include "modem.h"
 #include "pins.h"
 #include "pmu.h"
@@ -98,10 +95,6 @@ void setup() {
     init_sensor(temp_init, "temperature sensor");
     init_sensor(turbidity_init, "turbidity sensor");
     init_sensor(tds_init, "TDS sensor");
-    /*
-    init_sensor(compass_init, "compass");
-    init_sensor(imu_init, "IMU");
-    */
 
     // Initialization of specific sensors that are only present on one of the mote types
 #if RIVERMOTE

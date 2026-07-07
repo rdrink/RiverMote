@@ -24,11 +24,6 @@
 #define PIN_H2O2 48
 #define PIN_H2O3 47
 
-// Light sensor 
-#define PIN_CDS 8 // blu
-// Flasher LED
-#define PIN_FLASHER 18 // wht
-
 // Motor pins (River Mote only)
 #define PIN_MOTOR1_EN 46
 #define PIN_MOTOR2_EN 9

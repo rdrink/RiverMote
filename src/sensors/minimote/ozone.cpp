@@ -1,4 +1,4 @@
-#include "sensors/ozone.h"
+#include "sensors/minimote/ozone.h"
 
 #if MINIMOTE
 

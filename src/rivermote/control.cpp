@@ -7,7 +7,7 @@
 #include "rivermote/bluetooth.h"
 #include "rivermote/motors.h"
 #include "rivermote/nav.h"
-#include "sensors/compass.h"
+#include "sensors/rivermote/compass.h"
 #include "modem.h"
 
 // Button state tracking

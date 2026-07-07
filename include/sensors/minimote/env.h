@@ -1,8 +1,12 @@
 #pragma once
 
+#if MINIMOTE
+
 typedef struct EnvData {
-    // °C, %, mw/cm2, lux, hPa
-    float tempC, hum, uv, lum, baro;
+    // °C, %, hPa, m
+    float temp, hum, baro, alt;
+    // AQI-UBA, ppm, ppm
+    float aqi, voc, co2;
 } EnvData;
 
 /**
@@ -15,3 +19,5 @@ bool env_init();
  * @return env sensors values
  */
 EnvData env_read();
+
+#endif // MINIMOTE

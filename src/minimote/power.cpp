@@ -9,11 +9,11 @@
 #include <Wire.h>
 
 #include "minimote/comm.h"
-#include "sensors/air_velocity.h"
-#include "sensors/chamber.h"
-#include "sensors/env.h"
-#include "sensors/ozone.h"
-#include "sensors/pm_sensor.h"
+#include "sensors/minimote/air_velocity.h"
+#include "sensors/minimote/chamber.h"
+#include "sensors/minimote/env.h"
+#include "sensors/minimote/ozone.h"
+#include "sensors/minimote/pm.h"
 #include "sensors/temp.h"
 #include "modem.h"
 #include "pmu.h"

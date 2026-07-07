@@ -1,7 +1,9 @@
+#include "sensors/rivermote/compass.h"
+
+#if RIVERMOTE
+
 #include <math.h>
 #include <SparkFun_MMC5983MA_Arduino_Library.h>
-
-#include "sensors/compass.h"
 
 static SFE_MMC5983MA mag;
 static bool magInitialized = false;
@@ -48,3 +50,5 @@ float compass_read() {
     // Convert to degrees and return
     return degrees(heading) + 180.f;
 }
+
+#endif // RIVERMOTE

@@ -1,4 +1,4 @@
-#include "sensors/air_velocity.h"
+#include "sensors/minimote/air_velocity.h"
 
 #if MINIMOTE
 

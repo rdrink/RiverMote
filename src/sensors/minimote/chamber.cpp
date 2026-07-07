@@ -1,3 +1,5 @@
+#include "sensors/minimote/chamber.h"
+
 #if MINIMOTE
 
 #include <SparkFun_TMP117.h>

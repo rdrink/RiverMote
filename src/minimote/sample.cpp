@@ -6,11 +6,12 @@
 #include <ArduinoJson.h>
 #include <sys/time.h>
 
-#include "sensors/air_velocity.h"
-#include "sensors/chamber.h"
-#include "sensors/env.h"
-#include "sensors/ozone.h"
-#include "sensors/pm_sensor.h"
+#include "sensors/minimote/air_velocity.h"
+#include "sensors/minimote/chamber.h"
+#include "sensors/minimote/env.h"
+#include "sensors/minimote/ozone.h"
+#include "sensors/minimote/pm.h"
+#include "sensors/minimote/uv.h"
 #include "sensors/tds.h"
 #include "sensors/temp.h"
 #include "sensors/turbidity.h"
@@ -38,7 +39,9 @@
 typedef struct SampleAccumulator {
     float water_temp, turbidity, tds;
     float air_velocity, air_velocity_peak;
-    float air_temp, humidity, uv, lum, baro;
+    float air_temp, humidity, baro, alt;
+    float aqi, voc, co2;
+    float uv;
     double ozone;
     float pm1_0, pm2_5, pm10;
     float chamber_temp;
@@ -62,11 +65,14 @@ void minimote_sample_accumulate() {
 
     CHECK_AND_ACCUM(ozone, ozone_read());
     EnvData env = env_read();
-    CHECK_AND_ACCUM(air_temp, env.tempC);
+    CHECK_AND_ACCUM(air_temp, env.temp);
     CHECK_AND_ACCUM(humidity, env.hum);
-    CHECK_AND_ACCUM(uv, env.uv);
-    CHECK_AND_ACCUM(lum, env.lum);
     CHECK_AND_ACCUM(baro, env.baro);
+    CHECK_AND_ACCUM(alt, env.alt);
+    CHECK_AND_ACCUM(aqi, env.aqi);
+    CHECK_AND_ACCUM(voc, env.voc);
+    CHECK_AND_ACCUM(co2, env.co2);
+    CHECK_AND_ACCUM(uv, uv_read());
 
     PMData pm = pm_read();
     CHECK_AND_ACCUM(pm1_0, pm.pm1_0);
@@ -98,9 +104,12 @@ void minimote_sample_get(char *payload, size_t payload_length) {
     ADD_AVERAGE(ozone);
     ADD_AVERAGE(air_temp);
     ADD_AVERAGE(humidity);
-    ADD_AVERAGE(uv);
-    ADD_AVERAGE(lum);
     ADD_AVERAGE(baro);
+    ADD_AVERAGE(alt);
+    ADD_AVERAGE(aqi);
+    ADD_AVERAGE(voc);
+    ADD_AVERAGE(co2);
+    ADD_AVERAGE(uv);
 
     ADD_AVERAGE(pm1_0);
     ADD_AVERAGE(pm2_5);

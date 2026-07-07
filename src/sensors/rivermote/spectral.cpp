@@ -1,4 +1,4 @@
-#include "sensors/spectral.h"
+#include "sensors/rivermote/spectral.h"
 
 #if RIVERMOTE
 

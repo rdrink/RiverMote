@@ -1,4 +1,4 @@
-#include "sensors/pm_sensor.h"
+#include "sensors/minimote/pm.h"
 
 #if MINIMOTE
 
