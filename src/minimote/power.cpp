@@ -14,6 +14,7 @@
 #include "sensors/minimote/env.h"
 #include "sensors/minimote/ozone.h"
 #include "sensors/minimote/pm.h"
+#include "sensors/minimote/uv.h"
 #include "sensors/temp.h"
 #include "modem.h"
 #include "pmu.h"
@@ -41,10 +42,11 @@ static inline void sleep_loop() {
 // Reinitializes i2c and all sensors connected to it.
 static void reinit_i2c() {
     env_init();
-    ozone_init();
     velo_init();
     chamber_init();
     temp_init();
+    uv_init();
+    // Ozone and PM sensors are on an always-on power bus, so they do not need to be reinitialized
 }
 
 /**
