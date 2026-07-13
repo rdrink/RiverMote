@@ -37,7 +37,6 @@ EnvData env_read() {
     };
     
     // Check for validity
-    bme.lastOperateStatus
     if (data.temp < -40.f || data.temp > 50.f) {
         data.temp = NAN;
     }
