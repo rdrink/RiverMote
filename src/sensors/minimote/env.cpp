@@ -5,7 +5,7 @@
 #include <DFRobot_BME280.h>
 #include <DFRobot_ENS160.h>
 
-static DFRobot_ENS160_I2C ens(&Wire, 0x52);
+static DFRobot_ENS160_I2C ens(&Wire, 0x52); // NOT the default address! It conflicts with our UV sensor
 static DFRobot_BME280_IIC bme(&Wire, 0x76);
 static bool ready = false;
 
@@ -36,11 +36,18 @@ EnvData env_read() {
         .co2 = static_cast<float>(ens.getECO2()),
     };
     
+    // Check for validity
+    bme.lastOperateStatus
     if (data.temp < -40.f || data.temp > 50.f) {
         data.temp = NAN;
     }
     if (data.hum < 0.f || data.hum > 100.f) {
         data.hum = NAN;
+    }
+    if (ens.getENS160Status() != ens.eNormalOperation) {
+        data.aqi = NAN;
+        data.voc = NAN;
+        data.co2 = NAN;
     }
     return data;
 }
