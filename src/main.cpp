@@ -67,9 +67,6 @@ void setup() {
 #if MINIMOTE
     Serial.println("Welcome to Mini Mote (powered by River Mote)!");
 #endif
-    uint8_t mac[6] = {};
-    esp_read_mac(mac, ESP_MAC_WIFI_STA);
-    Serial.printf("device id: %02x%02x%02x%02x%02x%02x\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
     Serial.print("Initializing pmu:");
     if (!pmu_init()) {
@@ -117,6 +114,10 @@ void setup() {
     // Mini mote-only tasks
     minimote_init(initted);
 #endif
+
+    uint8_t mac[6] = {};
+    esp_read_mac(mac, ESP_MAC_WIFI_STA);
+    Serial.printf("device id: %02x%02x%02x%02x%02x%02x\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
     Serial.println("Ready!");
 }
