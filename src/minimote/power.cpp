@@ -41,12 +41,11 @@ static inline void sleep_loop() {
 
 // Reinitializes i2c and all sensors connected to it.
 static void reinit_i2c() {
-    env_init();
     velo_init();
     chamber_init();
     temp_init();
     uv_init();
-    // Ozone and PM sensors are on an always-on power bus, so they do not need to be reinitialized
+    // Ozone, environmental, and PM sensors are on an always-on power bus, so they do not need to be reinitialized
 }
 
 /**

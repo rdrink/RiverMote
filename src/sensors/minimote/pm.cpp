@@ -36,7 +36,7 @@ bool pm_init() {
 }
 
 PMData pm_read() {
-    if (!ready) {
+    if (!ready || bmv080.isObstructed()) {
         return {NAN, NAN, NAN};
     }
     // We ignore the return value of this because it could return false if there is stale data, which is fine-ish

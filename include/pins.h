@@ -14,11 +14,6 @@
 // TDS 
 #define PIN_TDS 10
 
-// Air quality (Mini Mote only)
-#define PIN_WIND 11
-#define PIN_GAS1 12
-#define PIN_GAS2 13
-
 // H2O sensors
 #define PIN_H2O1 45
 #define PIN_H2O2 48
